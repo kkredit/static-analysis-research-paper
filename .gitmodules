@@ -1,0 +1,3 @@
+[submodule "presentation/focus-theme"]
+	path = presentation/focus-theme
+	url = https://github.com/elauksap/focus-beamertheme
