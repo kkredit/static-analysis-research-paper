@@ -8,5 +8,8 @@ Built using TexStudio using packages `texlive-latex-extra` and `texlive-science`
 
 The research paper is for GVSU's Computing and Information Systems 618, Secure Software Engineering.
 
-Copyright Kevin Kredit 2019. All rights reserved.
+## License and Copyright
+
+IEEE document template is LLPL; presentation template is GPL; all content is copyright Kevin Kredit
+2019, all rights reserved.
 
