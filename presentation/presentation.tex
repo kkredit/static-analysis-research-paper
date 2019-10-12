@@ -1,0 +1,41 @@
+% Full instructions available at:
+% https://github.com/elauksap/focus-beamertheme
+
+\documentclass{beamer}
+\usetheme{focus}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %
+
+\title{FlawFinder \\ and other tools}
+\subtitle{in Secure Development Processeses}
+\author{Kevin Kredit}
+%\titlegraphic{\includegraphics[scale=1.25]{focuslogo.pdf}}
+\institute{GVSU \\ CIS 618}
+\date{10/12/2019}
+
+\begin{document}
+  \begin{frame}
+    \maketitle
+  \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRAMES %
+
+% Use starred version (e.g. \section*{Section name})
+% to disable (sub)section page.
+\section{Section 1}
+
+\subsection{Subsection 1.1}
+  \begin{frame}{Simple frame}
+    This is a simple frame.
+  \end{frame}
+
+\appendix
+  \begin{frame}{References}
+    \nocite{*}
+    \bibliography{bibliography}
+    \bibliographystyle{plain}
+  \end{frame}
+
+\end{document}
