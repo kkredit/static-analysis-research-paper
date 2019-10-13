@@ -28,7 +28,12 @@ Email: k.kredit.us@ieee.org}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %
 
 \begin{abstract}
-Abstract.
+Static analysis tools provide insights to security and correctness early in the software development
+process. FlawFinder is a static analysis tool for C and C++ focusing on dangerous method use. It
+performs a syntax-aware search, identifies dangerous functions uses, and prints a ranked list of
+warnings. A complete secure development process may employ multiple static analysis tools. Statick
+is a plugin-based framework to manage multiple tools, including FlawFinder. To simplify the workflow
+for small projects, a Docker container has been built with a portable Statick environment.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -39,7 +44,24 @@ FlawFinder, secure software, development process
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAPER %
 
 \section{Introduction}
-Introduction.
+
+Security cannot be bolted on. The sooner in a project that security is considered, the cheaper it is
+to achieve. If a project can continuously validate application security principles before it is
+finished, or even before it builds, it will experience fewer costly surprises down the road.
+
+Static analysis tools provide this capability. They read source code and report possible errors in a
+developer-friendly format. Other validation techniques such as functional tests, unit tests, binary
+analysis, and runtime analysis require varying levels of readiness. Because static analysis tools
+require only source code, they can be integrated from the very beginning of the development process.
+
+Two functions: correct basic human errors; apply logic to provide insights that surpass human
+capabilities.
+
+Humans have a tendency to be imperfect, making basic errors, using dangerous constructs, and
+violating coding standards. Several of these errors are relatively simple to detect via automated
+source analysis tools.
+
+Static analysis tools exist to correct these little errors
 
 \subsection{Static Analysis Tools}
 A little intro to static analysis tools.
@@ -48,19 +70,32 @@ A little intro to static analysis tools.
 A little intro to FlawFinder.
 
 \subsection{This Paper's Contribution}
-What this paper will have.
+What this paper will have. (How to make it easier!)
 
 
 \section{Static Analysis Tools}
-Lorem ipsum.
+
+\subsection{Secure Software Development Process}
+
+\subsection{Capabilities and Limitations}
 
 
 \section{FlawFinder}
-Lorem ipsum.
+
+\subsection{Purpose}
+
+\subsection{How It Works}
+
+\subsection{Example}
 
 
 \section{Easy Static Analysis}
-Lorem ipsum.
+
+\subsection{Lower the Barrier to Entry}
+
+\subsection{Frameworks}
+
+\subsection{Docker Container}
 
 
 \section{Conclusion}
