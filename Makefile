@@ -16,12 +16,12 @@ $(DOCNAME).pdf: $(DOCNAME).tex
 	pdflatex $(DOCNAME).tex
 
 $(PRESNAME).pdf:
-	$(MAKE) -c $(PRESDIR)
+	$(MAKE) -C $(PRESDIR)
 
 full-clean: clean
-  $(MAKE) -c $(PRESDIR) full-clean
+	$(MAKE) -C $(PRESDIR) full-clean
 	rm -rf *.pdf
 
 clean:
-	$(MAKE) -c $(PRESDIR) clean
+	$(MAKE) -C $(PRESDIR) clean
 	rm -rf *.aux *.log *.out *.fls *.fdb_latexmk *.synctex.gz

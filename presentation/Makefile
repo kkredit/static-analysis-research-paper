@@ -1,4 +1,5 @@
 DOCNAME := presentation
+ENVIRON := TEXINPUTS='.:./focus-theme/:' TEXFORMATS='.:./focus-theme/:'
 
 .PHONY: clean
 .PHONY: default
@@ -9,8 +10,8 @@ default: all
 all: $(DOCNAME).pdf
 
 $(DOCNAME).pdf: $(DOCNAME).tex
-	pdflatex $(DOCNAME).tex
-	pdflatex $(DOCNAME).tex
+	$(ENVIRON) pdflatex $(DOCNAME).tex
+	$(ENVIRON) pdflatex $(DOCNAME).tex
 
 full-clean: clean
 	rm -rf *.pdf
