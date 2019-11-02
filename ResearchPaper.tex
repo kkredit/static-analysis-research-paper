@@ -37,7 +37,7 @@ for small projects, a Docker container has been built with a portable Statick en
 \end{abstract}
 
 \begin{IEEEkeywords}
-FlawFinder, secure software, development process
+FlawFinder, Statick, static analysis, secure software, development process
 \end{IEEEkeywords}
 
 
@@ -55,9 +55,9 @@ functional tests, unit tests, binary analysis, and runtime analysis require vary
 readiness. Because static analysis tools require only source code, developers can integrate them
 from the very beginning of the process.
 
-FlawFinder is a static analysis tool for C and C++. It works by searching for invocations of
-dangerous or hard to use functions, ranking them based in order of risk, and displaying them with
-helpful messages.
+FlawFinder is a static analysis tool for C and C++ \cite{flawfinder}. It works by searching for
+invocations of dangerous or hard to use functions, ranking them based in order of risk, and
+displaying them with helpful messages.
 
 This paper gives a brief overview of static analysis tools in general, including their purpose,
 their capabilities and limitations, and how they fit in a secure software engineering workflow. It
@@ -117,7 +117,11 @@ Conclusion.
 
 \begin{thebibliography}{00}
 
-\bibitem{b1} A Reference.
+\bibitem{flawfinder} D. Wheeler, "Flawfinder Home Page", Dwheeler.com, 2019. [Online]. Available:
+https://dwheeler.com/flawfinder/. [Accessed: 02- Nov- 2019].
+
+\bibitem{statick} "sscpac/statick", GitHub, 2019. [Online]. Available:
+https://github.com/sscpac/statick. [Accessed: 02- Nov- 2019].
 
 \end{thebibliography}
 
