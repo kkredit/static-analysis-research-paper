@@ -45,16 +45,29 @@ FlawFinder, secure software, development process
 
 \section{Introduction}
 
-Security cannot be bolted on. The sooner in a project that security is considered, the cheaper it is
-to achieve. If a project can continuously validate application security principles before it is
+Security cannot be bolted on. The sooner project developers consider security, the cheaper it is to
+achieve. If a project can continuously validate application security principles before it is
 finished, or even before it builds, it will experience fewer costly surprises later on.
 
 Static analysis tools provide this continuous validation capability. They read source code and
 report possible errors in a developer-friendly format. Other validation techniques such as
 functional tests, unit tests, binary analysis, and runtime analysis require varying levels of
-readiness. Because static analysis tools require only source code, they can be integrated from the
-very beginning of the development process.
+readiness. Because static analysis tools require only source code, developers can integrate them
+from the very beginning of the process.
 
+FlawFinder is a static analysis tool for C and C++. It works by searching for invocations of
+dangerous or hard to use functions, ranking them based in order of risk, and displaying them with
+helpful messages.
+
+This paper gives a brief overview of static analysis tools in general, including their purpose,
+their capabilities and limitations, and how they fit in a secure software engineering workflow. It
+then describes FlawFinder in particular, including how it works, how it is configured, and example
+output from running it against a real project. Finally, it strives to lower the barrier for static
+analysis tool usage by describing the Statick framework and introducing a project that provides the
+Statick environment in a portable Docker container.
+
+\subsection{Static Analysis Tools}
+% A little intro to static analysis tools.
 Two functions: correct basic human errors; apply logic to provide insights that surpass human
 capabilities.
 
@@ -62,10 +75,7 @@ Humans have a tendency to be imperfect, making basic errors, using dangerous con
 violating coding standards. Several of these errors are relatively simple to detect via automated
 source analysis tools.
 
-Static analysis tools exist to correct these little errors
-
-\subsection{Static Analysis Tools}
-A little intro to static analysis tools.
+Static analysis tools exist to correct these little errors.
 
 \subsection{FlawFinder}
 A little intro to FlawFinder.
