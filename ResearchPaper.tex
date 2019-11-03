@@ -9,6 +9,8 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
+\def\tt#1{\mbox{\texttt{#1}}}
+
 \begin{document}
 
 
@@ -53,7 +55,7 @@ Static analysis tools provide this continuous validation capability. They read s
 report possible errors in a developer-friendly format. Other validation techniques such as
 functional tests, unit tests, binary analysis, and runtime analysis require varying levels of
 readiness. Because static analysis tools require only source code, developers can integrate them
-from the very beginning of the process.
+from the beginning of the process.
 
 FlawFinder is a static analysis tool for C and C++ \cite{flawfinder}. It works by searching for
 invocations of dangerous or hard to use functions, ranking them based in order of risk, and
@@ -66,29 +68,52 @@ output from running it against a real project. Finally, it strives to lower the 
 analysis tool usage by describing the Statick framework and introducing a project that provides the
 Statick environment in a portable Docker container.
 
-\subsection{Static Analysis Tools}
-% A little intro to static analysis tools.
-Two functions: correct basic human errors; apply logic to provide insights that surpass human
-capabilities.
-
-Humans have a tendency to be imperfect, making basic errors, using dangerous constructs, and
-violating coding standards. Several of these errors are relatively simple to detect via automated
-source analysis tools.
-
-Static analysis tools exist to correct these little errors.
-
-\subsection{FlawFinder}
-A little intro to FlawFinder.
-
-\subsection{This Paper's Contribution}
-What this paper will have. (How to make it easier!)
-
 
 \section{Static Analysis Tools}
 
-\subsection{Secure Software Development Process}
+Static analysis tools read source code files and produce warnings related to incorrect or dangerous
+constructs. Because they do not compile or execute code, there are limitations on what types of
+errors they can detect. Therefore, they comprise only a part of a complete secure software
+development process.
 
-\subsection{Capabilities and Limitations}
+\subsection{Capabilities}
+
+Analyzing source code provides several capabilities.
+
+\paragraph{Analyze as you develop} As already established, considering security late in the
+development process is difficult and costly. A major advantage of static analysis tools is that they
+do not require a complete product to test; they do not even require code to compile or contain valid
+syntax. Teams can setup static analysis tools at the start of a project and reap the benefits from
+the first line of code.
+
+\paragraph{Correct little human errors} Humans make frequent trivial errors. By negligence or
+ignorance, developers make typos and violate coding standards. Working with editors and compilers,
+source code analysis tools can identify and correct spelling errors and enforce coding standard
+rules.
+
+\paragraph{Identify dangerous method usage} Many standard software libraries contain dangerous or
+difficult to use methods. For example, the C standard library's \tt{strcpy} is highly vulnerable to
+buffer overflows, and the safer \tt{strncpy} should be used instead. \tt{strcpy} cannot be removed
+for the sake of backwards compatibility. To prevent its use in new code, static analysis tools can
+detect such usage.
+
+\paragraph{Identify dangerous syntax idioms} Blah blah.
+
+\paragraph{Apply rigorous logical analysis} Blah blah.
+
+\paragraph{Interact with the human-computer interface} Blah blah.
+
+\subsection{Limitations}
+
+Analyzing source alone also entails limitations.
+
+\paragraph{No functional testing} Blah blah.
+
+\paragraph{No compiler validation} Blah blah.
+
+\paragraph{No higher order logic validation} Blah blah.
+
+\subsection{Secure Software Development Process}
 
 
 \section{FlawFinder}
