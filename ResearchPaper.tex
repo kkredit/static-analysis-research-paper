@@ -80,7 +80,7 @@ development process.
 
 Analyzing source code provides several capabilities.
 
-\paragraph{Analyze as you develop} As already established, considering security late in the
+\paragraph{Analyze during development} As already established, considering security late in the
 development process is difficult and costly. A major advantage of static analysis tools is that they
 do not require a complete product to test; they do not even require code to compile or contain valid
 syntax. Teams can setup static analysis tools at the start of a project and reap the benefits from
@@ -94,24 +94,33 @@ rules.
 \paragraph{Identify dangerous method usage} Many standard software libraries contain dangerous or
 difficult to use methods. For example, the C standard library's \tt{strcpy} is highly vulnerable to
 buffer overflows, and the safer \tt{strncpy} should be used instead. \tt{strcpy} cannot be removed
-for the sake of backwards compatibility. To prevent its use in new code, static analysis tools can
-detect such usage.
+from the library for the sake of backwards compatibility. To prevent its use in new code, static
+analysis tools can detect such usage.
 
-\paragraph{Identify dangerous syntax idioms} Blah blah.
+\paragraph{Identify dangerous syntax idioms} Sometimes syntactic features that lead to concise code
+can also lead to confusion, and confusion leads to errors. Static analysis can identify these
+dangerous idioms.
 
-\paragraph{Apply rigorous logical analysis} Blah blah.
-
-\paragraph{Interact with the human-computer interface} Blah blah.
+\paragraph{Apply rigorous logical analysis} Beyond some of the simple applications, advanced static
+analysis can detect errors that would take a human a long time to identify. Through control or data
+flow analysis, it can detect dead code, memory errors, and information leakage. This type of
+advanced analysis is typically computationally expensive and limited by the semantics of the
+language under analysis (e.g., the rules of Rust enable stronger static guarantees than C).
 
 \subsection{Limitations}
 
 Analyzing source alone also entails limitations.
 
-\paragraph{No functional testing} Blah blah.
+\paragraph{No functional testing} Source code analysis is not intelligent to tell whether code is
+semantically correct. Functional tests are still necessary to ensure correct feature implementation.
 
-\paragraph{No compiler validation} Blah blah.
+\paragraph{No compiler validation} A fully verified toolchain requires certification that the
+compiled assembly code correctly implements the uncompiled source. Functional testing informally
+tests this; static analysis cannot.
 
-\paragraph{No higher order logic validation} Blah blah.
+\paragraph{No higher order logic validation} Many security vulnerabilities are the result of
+insecure designs, not insecure implementations. Algorithm, protocol, and architecture analysis are
+not within the scope of static analysis tools.
 
 \subsection{Secure Software Development Process}
 
