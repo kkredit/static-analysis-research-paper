@@ -6,6 +6,8 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{rotating}
+\usepackage{afterpage}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
@@ -124,6 +126,15 @@ not within the scope of static analysis tools.
 
 \subsection{Secure Software Development Process}
 
+See figure \ref{fig:ms_sdl}.
+
+\afterpage{\clearpage}
+\begin{sidewaysfigure}[ht]
+\centerline{\includegraphics[width=1.1\linewidth,height=1.1\textheight,keepaspectratio]{images/microsoft_sdl_process.png}}
+\caption{The Microsoft Software Development Lifecycle Process \cite{ms_sdl}}
+\label{fig:ms_sdl}
+\end{sidewaysfigure}
+
 
 \section{FlawFinder}
 
@@ -151,11 +162,15 @@ Conclusion.
 
 \begin{thebibliography}{00}
 
-\bibitem{flawfinder} D. Wheeler, "Flawfinder Home Page", Dwheeler.com, 2019. [Online]. Available:
-https://dwheeler.com/flawfinder/. [Accessed: 02- Nov- 2019].
+\bibitem{flawfinder} D. Wheeler, "Flawfinder Home Page", \textit{Dwheeler.com}, 2019. [Online].
+Available: https://dwheeler.com/flawfinder/. [Accessed: 02- Nov- 2019].
 
-\bibitem{statick} "sscpac/statick", GitHub, 2019. [Online]. Available:
+\bibitem{statick} "sscpac/statick", \textit{GitHub}, 2019. [Online]. Available:
 https://github.com/sscpac/statick. [Accessed: 02- Nov- 2019].
+
+\bibitem{ms_sdl} "Simplified Implementation of the Microsoft SDL", \textit{Microsoft.com}, 2010.
+[Online]. Available: https://www.microsoft.com/en-us/download/details.aspx?id=12379. [Accessed: 13-
+Nov- 2019].
 
 \end{thebibliography}
 
