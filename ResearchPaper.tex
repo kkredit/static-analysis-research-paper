@@ -18,7 +18,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %
 
-\title{FlawFinder and Secure Development Processes}
+\title{Flawfinder and Secure Development Processes}
 
 \author{\IEEEauthorblockN{Kevin Kredit}
 \IEEEauthorblockA{\textit{GVSU CIS Department} \\
@@ -33,15 +33,15 @@ Email: k.kredit.us@ieee.org}
 
 \begin{abstract}
 Static analysis tools provide insights to security and correctness early in the software development
-process. FlawFinder is a static analysis tool for C and C++ focusing on dangerous method use. It
+process. Flawfinder is a static analysis tool for C and C++ focusing on dangerous method use. It
 performs a syntax-aware search, identifies dangerous functions uses, and prints a ranked list of
 warnings. A complete secure development process may employ multiple static analysis tools. Statick
-is a plugin-based framework to manage multiple tools, including FlawFinder. To simplify the workflow
+is a plugin-based framework to manage multiple tools, including Flawfinder. To simplify the workflow
 for small projects, a Docker container has been built with a portable Statick environment.
 \end{abstract}
 
 \begin{IEEEkeywords}
-FlawFinder, Statick, static analysis, secure software, development process
+Flawfinder, Statick, static analysis, secure software, development process
 \end{IEEEkeywords}
 
 
@@ -59,13 +59,13 @@ functional tests, unit tests, binary analysis, and runtime analysis require vary
 readiness. Because static analysis tools require only source code, developers can integrate them
 from the beginning of the process.
 
-FlawFinder is a static analysis tool for C and C++ \cite{flawfinder}. It works by searching for
+Flawfinder is a static analysis tool for C and C++ \cite{flawfinder}. It works by searching for
 invocations of dangerous or hard to use functions, ranking them based in order of risk, and
 displaying them with helpful messages.
 
 This paper gives a brief overview of static analysis tools in general, including their purpose,
 their capabilities and limitations, and how they fit in a secure software engineering workflow. It
-then describes FlawFinder in particular, including how it works, how it is configured, and example
+then describes Flawfinder in particular, including how it works, how it is configured, and example
 output from running it against a real project. Finally, it strives to lower the barrier for static
 analysis tool usage by describing the Statick framework and introducing a project that provides the
 Statick environment in a portable Docker container.
@@ -136,9 +136,31 @@ See figure \ref{fig:ms_sdl}.
 \end{sidewaysfigure}
 
 
-\section{FlawFinder}
+\section{Flawfinder}
+
+The above section discusses static analysis tools in general. This section analyzes one such tool,
+Flawfinder.
 
 \subsection{Purpose}
+
+Flawfinder is a free and open source C/C++ static analysis tool licensed under the GNU Public
+License version 2. The project is defined by simplicity. It is simple in concept, simple in
+implementation, and simple to use.
+
+Flawfinder focuses on just one of static analysis tools' capabilities listed above--to identify
+dangerous method usage \cite{flawfinder}. C and C++ standard libraries contain many functions with
+potential security vulnerabilities. The languages are memory unsafe and do not enforce robust error
+handling. Further, they are used in many security-critical operating system settings. Flawfinder's
+simple, core purpose is to identify usage of these dangerous methods, rank each instance's risk, and
+present an ordered list of potential vulnerabilities to the developer. This is its entire function.
+
+Flawfinder is also simple in implementation. Though it analyzes C and C++, it is written in Python.
+Python is a more expressive language with more powerful string parsing capabilities than C or C++.
+Python is not as performant as C or C++, but at 45,000 lines/second on 2014 hardware, it is as fast
+as it needs to be. Lastly, Python has a mature environment of libraries and developers, which means
+that the runtime is present by default on most machines and future generations can take over
+development when David Wheeler, the project's main author, no longer personally maintains the
+project.
 
 \subsection{How It Works}
 
@@ -163,7 +185,7 @@ Conclusion.
 \begin{thebibliography}{00}
 
 \bibitem{flawfinder} D. Wheeler, "Flawfinder Home Page", \textit{Dwheeler.com}, 2019. [Online].
-Available: https://dwheeler.com/flawfinder/. [Accessed: 02- Nov- 2019].
+Available: https://dwheeler.com/Flawfinder/. [Accessed: 02- Nov- 2019].
 
 \bibitem{statick} "sscpac/statick", \textit{GitHub}, 2019. [Online]. Available:
 https://github.com/sscpac/statick. [Accessed: 02- Nov- 2019].
