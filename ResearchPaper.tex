@@ -9,10 +9,37 @@
 \usepackage{rotating}
 \usepackage{lscape}
 \usepackage{caption}
+\usepackage{listings}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \def\tt#1{\mbox{\texttt{#1}}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=codestyle}
 
 \begin{document}
 
@@ -166,6 +193,19 @@ as it needs to be. Lastly, Python has a mature environment of libraries and deve
 that the runtime is present by default on most machines and future generations can take over
 development when David Wheeler, the project's main author, no longer personally maintains the
 project.
+
+Finally, Flawfinder is designed to be simple to use. It can be installed and ran using the commands
+in listing \ref{lst:ff_usage}.
+
+\begin{lstlisting}[language=sh, caption=Flawfinder Basic Usage, label=lst:ff_usage]
+pip install flawfinder
+flawfinder sourceFile.c
+flawfinder sourceDir/
+\end{lstlisting}
+
+If Python is already installed, installing Flawfinder requires a single command, shown in line 1.
+Flawfinder can be run on a single file as shown in line 2, or recursively on a directory as shown in
+line 3.
 
 \subsection{How It Works}
 
