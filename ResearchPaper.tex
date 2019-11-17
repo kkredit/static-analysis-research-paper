@@ -16,6 +16,8 @@
 
 \def\tt#1{\mbox{\texttt{#1}}}
 
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{\bfseries #1}}
+
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -154,8 +156,48 @@ not within the scope of static analysis tools.
 
 \subsection{Secure Software Development Process}
 
-See figure \ref{fig:ms_sdl}.
+A complete secure software development process includes many steps in addition to static analysis.
+Microsoft has developed a detailed sequence of steps called the ``Microsoft Software Development
+Lifecycle'' (or SDL). The complete lifecycle is shown in figure \ref{fig:ms_sdl}.
 
+The SDL contains five development stages: requirements, design, implementation, verification, and
+release. The security focus of each stage is shown in table \ref{table:sdl_security}.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|p{.3\textwidth}|}
+        \hline
+        \thead{Stage} & \thead{Security Aspects} \\ \hline
+        Requirements &
+            Security requirements; define bug tracking process
+            \\ \hline
+        Design &
+            Consult advisors on security; minimize attack surface; perform threat modeling
+            \\ \hline
+        Implementation &
+            Specify toolchain and flags; run static analysis; minimize bad APIs
+            \\ \hline
+        Verification &
+            Dynamic analysis; fuzz testing; penetration testing
+            \\ \hline
+        Release &
+            Document incident response procedure; final security review
+            \\ \hline
+    \end{tabular}
+    \caption{Security Aspects of SDL Stages}
+    \label{table:sdl_security}
+\end{table}
+
+These stages demonstrate that static analysis is only one tool among many. As Flawfinder's homepage
+says, ``No tool can substitute for human thought! ... `a fool with a tool is still a fool'. It’s a
+mistake to think that analysis tools (like flawfinder) are a substitute for security training and
+knowledge.'' Static analysis tools supplement training, disciplined bug tracking and incident
+response, threat modeling, dynamic testing, fuzz testing, penetration testing, and holistic reviews.
+
+The SDL stages are based on the waterfall approach to software development. However, the concepts
+can be applied to agile if the cycle times are compressed from project-scale to sprint-scale.
+
+% Down here because takes whole page
 \onecolumn
 \begin{landscape}
 \begin{figure}
