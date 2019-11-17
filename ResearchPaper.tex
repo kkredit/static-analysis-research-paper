@@ -7,7 +7,8 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{rotating}
-\usepackage{afterpage}
+\usepackage{lscape}
+\usepackage{caption}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
@@ -128,12 +129,16 @@ not within the scope of static analysis tools.
 
 See figure \ref{fig:ms_sdl}.
 
-\afterpage{\clearpage}
-\begin{sidewaysfigure}[ht]
-\centerline{\includegraphics[width=1.1\linewidth,height=1.1\textheight,keepaspectratio]{images/microsoft_sdl_process.png}}
-\caption{The Microsoft Software Development Lifecycle Process \cite{ms_sdl}}
-\label{fig:ms_sdl}
-\end{sidewaysfigure}
+\onecolumn
+\begin{landscape}
+\begin{figure}
+    \includegraphics[width=1.0\linewidth,height=1.0\textheight,keepaspectratio]{images/microsoft_sdl_process.png}
+    \captionsetup{justification=centering}
+    \caption{The Microsoft Software Development Lifecycle Process \cite{ms_sdl}}
+    \label{fig:ms_sdl}
+\end{figure}
+\end{landscape}
+\twocolumn
 
 
 \section{Flawfinder}
