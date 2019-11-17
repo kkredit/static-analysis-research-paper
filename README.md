@@ -1,7 +1,7 @@
 
-# FlawFinder Research Paper
+# Flawfinder Research Paper
 
-Research paper analyzing the static analysis tool [FlawFinder](https://dwheeler.com/flawfinder/)
+Research paper analyzing the static analysis tool [Flawfinder](https://dwheeler.com/flawfinder/)
 and how it fits in a secure software development process.
 
 Built using TexStudio using packages `texlive-latex-extra` and `texlive-science`.
