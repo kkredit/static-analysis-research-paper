@@ -39,7 +39,9 @@
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
-    tabsize=2
+    tabsize=2,
+    xleftmargin=.125in,
+    xrightmargin=.0in
 }
 \lstset{style=codestyle}
 
@@ -251,8 +253,78 @@ line 3.
 
 \subsection{How It Works}
 
+Flawfinder analysis runs in a basic sequence outlined in the following sections.
+
+\subsubsection{Load a Database of Functions}
+
+First, Flawfinder loads a database of error-prone or insecure C and C++ standard library functions.
+Functions may end up in this list because they are prone to ``buffer overflow risks, format string
+problems, race conditions, potential shell metacharacter dangers, and poor random number
+acquisition'' \cite{flawfinder}. This database contains information on the function name, the type
+of risk it poses, and the magnitude of that risk. The database itself is valuable tool in its own
+right.
+
+\subsubsection{Find Function Hits}
+
+\subsubsection{Sort Hits by Risk}
+
+\subsubsection{Produce a Report of Risks}
+
 \subsection{Example}
 
+An example will demonstrate Flawfinder in action. Listing \ref{lst:example_code} shows a small C
+program.
+
+\begin{lstlisting}[language=c, caption=C Example Program, label=lst:example_code]
+#include <stdio.h>
+#include <stdlib.h>
+
+int getNumber() {
+    char numberBuffer[10];
+    gets(numberBuffer);
+    return atoi(numberBuffer);
+}
+
+int main() {
+    printf("This program multiplies two "
+           "numbers.\n");
+
+    printf("Enter number one: ");
+    int m1 = getNumber();
+    printf("Enter number two: ");
+    int m2 = getNumber();
+
+    printf("\nThe product of %d and %d is %d\n",
+           m1, m2, m1 * m2);
+
+    return 0;
+}
+\end{lstlisting}
+
+This program has a few obvious problems in the \tt{getNumber()} function. First, it uses a
+fixed-size buffer for user input. This might not matter if the input is handled correctly, but
+second, it uses \tt{gets()} to read from \tt{stdin}. \tt{gets} does not check for buffer overflows.
+Third, it uses \tt{atoi} without checking for error conditions. Aside from security implications,
+this program may simply crash or produce illogical results without doing more to validate the input.
+
+Running Flawfinder on this file produces the results in listing \ref{lst:example_results}.
+
+\begin{lstlisting}[caption=Example Flawfinder Results, label=lst:example_results]
+./example.c:6:  [5] (buffer) gets:
+  Does not check for buffer overflows (CWE-120, CWE-20). Use fgets() instead.
+./example.c:5:  [2] (buffer) char:
+  Statically-sized arrays can be improperly restricted, leading to potential
+  overflows or other issues (CWE-119:CWE-120). Perform bounds checking, use
+  functions that limit length, or ensure that the size is larger than the
+  maximum possible length.
+./example.c:7:  [2] (integer) atoi:
+  Unless checked, the resulting number can exceed the expected range
+  (CWE-190). If source untrusted, check both minimum and maximum, even if the
+  input had no minus sign (large numbers can roll over into negative number;
+  consider saving to an unsigned value if that is intended).
+\end{lstlisting}
+
+Full source for the example file and Flawfinder output is available online \cite{this_repo}.
 
 \section{Easy Static Analysis}
 
@@ -280,6 +352,9 @@ https://github.com/sscpac/statick. [Accessed: 02- Nov- 2019].
 \bibitem{ms_sdl} "Simplified Implementation of the Microsoft SDL", \textit{Microsoft.com}, 2010.
 [Online]. Available: https://www.microsoft.com/en-us/download/details.aspx?id=12379. [Accessed: 13-
 Nov- 2019].
+
+\bibitem{this_repo} "kkredit/static-analysis-research-paper", \textit{GitHub}, 2019. [Online].
+Available: https://github.com/kkredit/static-analysis-research-paper. [Accessed: 18- Nov- 2019].
 
 \end{thebibliography}
 
