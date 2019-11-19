@@ -266,9 +266,19 @@ right.
 
 \subsubsection{Find Function Hits}
 
-\subsubsection{Sort Hits by Risk}
+Second, Flawfinder searches the source code for instances of the functions in the database. This
+search is somewhat smart--it doesn't do full language parsing, but it does differentiate between
+code, comments and strings. This makes it smarter than a simple search tool, like \tt{grep}.
+Flawfinder will also ignore hits in lines that include the comment \tt{/* Flawfinder: ignore */}.
+This is so that developers can silence warnings for cases that they have analyzed and confirmed to
+not be real issues.
 
-\subsubsection{Produce a Report of Risks}
+\subsubsection{Produce a Report of Hits Sorted by Risk}
+
+Third, Flawfinder sorts the hits according to risk and prints a report for the user. The risk and
+description of the possible vulnerability are other fields in the database. The format of the report
+can be set using command line arguments. The user can tune the sensitivity to false positives, set
+a severity reporting threshold, and specify text formatting options.
 
 \subsection{Example}
 
