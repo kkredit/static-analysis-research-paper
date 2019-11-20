@@ -311,11 +311,11 @@ int main() {
 }
 \end{lstlisting}
 
-This program has a few obvious problems in the \tt{getNumber()} function. First, it uses a
-fixed-size buffer for user input. This might not matter if the input is handled correctly, but
-second, it uses \tt{gets()} to read from \tt{stdin}. \tt{gets} does not check for buffer overflows.
-Third, it uses \tt{atoi} without checking for error conditions. Aside from security implications,
-this program may simply crash or produce illogical results without doing more to validate the input.
+This program has a few obvious problems in the \tt{getNumber} function. First, it uses a fixed-size
+buffer for user input. This might not matter if the input is handled correctly, but second, it uses
+\tt{gets} to read from \tt{stdin}. \tt{gets} does not check for buffer overflows. Third, it uses
+\tt{atoi} without checking for error conditions. Aside from security implications, this program may
+simply crash or produce illogical results without doing more to validate the input.
 
 Running Flawfinder on this file produces the results in listing \ref{lst:example_results}.
 
@@ -333,6 +333,20 @@ Running Flawfinder on this file produces the results in listing \ref{lst:example
   input had no minus sign (large numbers can roll over into negative number;
   consider saving to an unsigned value if that is intended).
 \end{lstlisting}
+
+Flawfinder identified the same three problems. Instead of reporting them in order of occurrence, it
+reported them in order of severity--\tt{gets} is a particularly dangerous method, so it gets a 5.
+(The severity scale goes from 1-5.) Using a statically sized buffer can be dangerous, and indeed is
+in this program. However, Flawfinder is does not do thorough code analysis to tell whether the
+buffer is used safely or not. Because statically allocated buffers are commonly needed and used
+correctly, it only gets a 2. Finally, it points out that \tt{atoi} is easy to use incorrectly. This
+also receives a 2.
+
+It is worth noting two points here. First, not all hits are vulnerabilities. Flawfinder will report
+all instances of static buffers and \tt{atoi} even when they are used properly. In these situations,
+the \tt{/* Flawfinder ignore */} directive is the developer's friend. Second, the report notes can
+be quite helpful. The comments are concise, describe the issues, and in some cases direct the
+developer to safer alternatives, such as \tt{fgets}. This is a strength of the tool.
 
 Full source for the example file and Flawfinder output is available online \cite{this_repo}.
 
