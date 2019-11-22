@@ -32,6 +32,10 @@ clean:
 flawfinder:
 	flawfinder $(SOURCES) 2>&1 | tee report.txt
 
+statick: ../statick-docker/runContainer.sh
+	mkdir -p statick_output
+	./../statick-docker/runContainer.sh statick . statick_output || true
+
 $(BINDIR)/$(TARGET): $(OBJECTS)
 	mkdir -p $(BINDIR)
 	$(LINKER) $(OBJECTS) $(LFLAGS) -o $@

@@ -1,3 +1,6 @@
 [submodule "presentation/focus-theme"]
 	path = presentation/focus-theme
 	url = https://github.com/elauksap/focus-beamertheme
+[submodule "statick-docker"]
+	path = statick-docker
+	url = https://github.com/kkredit/statick-docker
