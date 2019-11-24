@@ -352,12 +352,52 @@ Full source for the example file and Flawfinder output is available online \cite
 
 \section{Easy Static Analysis}
 
+Static analysis tools offer measurable value to a project, but learning each tool and managing
+install dependencies can take a lot of work. Frameworks and containers offer solutions that can
+lower the barrier to entry.
+
 \subsection{Lower the Barrier to Entry}
 
-\subsection{Frameworks}
+Flawfinder is a useful tool, but only exercises a subset of static analysis tools' potential
+capabilities, and only for C and C++. In order to have a well-rounded static analysis approach, more
+is needed. More tools means more maintenance and configuration management. Static analysis
+frameworks address this problem.
+
+Statick \cite{statick} is one such framework. Also written in Python, it analyzes a workspace and
+applies multiple tools according to a detailed configuration or reasonable defaults. Statick's
+default setting auto-detects files and each relevant tool to it, depending on language. One of the
+tools it applies is Flawfinder. The same file that was analyzed directly with Flawfinder was also
+analyzed with Statick using the commands in listing \ref{lst:statick}. The results are available
+on GitHub \cite{this_repo}.
+
+\begin{lstlisting}[language=bash, caption=Example Statick Commands, label=lst:statick]
+$ mkdir -p statick_output
+$ statick . statick_output
+\end{lstlisting}
+
+Statick is not the focus of this paper, so its implementation is not studied in greater depth.
 
 \subsection{Docker Container}
 
+Statick solves the problem of static analysis tool configuration, but not environment and dependency
+management. Docker is a container technology that isolates runtime environments for consistency and
+portability. It is a perfect tool to use to solve the environment management problem for Statick.
+
+The tools to build a Statick Docker container are available on GitHub \cite{statick_container}.
+After the user has installed Docker, listing \ref{lst:statick_container} shows all the steps
+required to build and run the container.
+
+\begin{lstlisting}[language=bash, caption=Using the Statick Docker Container, label=lst:statick_container]
+$ ./buildImage.sh
+$ ./runContainer.sh
+Welcome to the Statick Docker environment
+$ # in the container; the current directory is mounted as /host
+$ exit
+$ # out of the container
+$ ./runContainer.sh mkdir statick_output && statick . statick_output
+# statick tool executed in container
+$ # out of the container
+\end{lstlisting}
 
 \section{Conclusion}
 Conclusion.
@@ -379,6 +419,9 @@ Nov- 2019].
 
 \bibitem{this_repo} "kkredit/static-analysis-research-paper", \textit{GitHub}, 2019. [Online].
 Available: https://github.com/kkredit/static-analysis-research-paper. [Accessed: 18- Nov- 2019].
+
+\bibitem{statick_container} "kkredit/statick-docker", \textit{GitHub}, 2019. [Online]. Available:
+https://github.com/kkredit/statick-docker. [Accessed: 24- Nov- 2019].
 
 \end{thebibliography}
 
