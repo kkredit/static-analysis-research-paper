@@ -88,8 +88,8 @@ finished, or even before it builds, it will experience fewer costly surprises la
 Static analysis tools provide this continuous validation capability. They read source code and
 report possible errors in a developer-friendly format. Other validation techniques such as
 functional tests, unit tests, binary analysis, and runtime analysis require varying levels of
-readiness. Because static analysis tools require only source code, developers can integrate them
-from the beginning of the process.
+product readiness. Because static analysis tools require only source code, developers can integrate
+them from the beginning of the process.
 
 Flawfinder is a static analysis tool for C and C++ \cite{flawfinder}. It works by searching for
 invocations of dangerous or hard to use functions, ranking them based in order of risk, and
@@ -135,18 +135,19 @@ analysis tools can detect such usage.
 can also lead to confusion, and confusion leads to errors. Static analysis can identify these
 dangerous idioms.
 
-\paragraph{Apply rigorous logical analysis} Beyond some of the simple applications, advanced static
-analysis can detect errors that would take a human a long time to identify. Through control or data
-flow analysis, it can detect dead code, memory errors, and information leakage. This type of
-advanced analysis is typically computationally expensive and limited by the semantics of the
-language under analysis (e.g., the rules of Rust enable stronger static guarantees than C).
+\paragraph{Apply rigorous logical analysis} Advanced static analysis can detect errors that would
+take a human a long time to identify. Through control or data flow analysis, it can detect dead
+code, memory errors, and information leakage. This type of advanced analysis is typically
+computationally expensive and limited by the semantics of the language under analysis (e.g., the
+rules of Rust enable stronger static guarantees than C).
 
 \subsection{Limitations}
 
 Analyzing source alone also entails limitations.
 
-\paragraph{No functional testing} Source code analysis is not intelligent to tell whether code is
-semantically correct. Functional tests are still necessary to ensure correct feature implementation.
+\paragraph{No functional testing} Source code analysis is not intelligent enough to tell whether
+code is semantically correct. Functional tests are still necessary to ensure correct feature
+implementation.
 
 \paragraph{No compiler validation} A fully verified toolchain requires certification that the
 compiled assembly code correctly implements the uncompiled source. Functional testing informally
@@ -154,7 +155,7 @@ tests this; static analysis cannot.
 
 \paragraph{No higher order logic validation} Many security vulnerabilities are the result of
 insecure designs, not insecure implementations. Algorithm, protocol, and architecture analysis are
-not within the scope of static analysis tools.
+outside the scope of static analysis tools.
 
 \subsection{Secure Software Development Process}
 
@@ -193,8 +194,9 @@ release. The security focus of each stage is shown in table \ref{table:sdl_secur
 These stages demonstrate that static analysis is only one tool among many. As Flawfinder's homepage
 says, ``No tool can substitute for human thought! ... `a fool with a tool is still a fool'. It’s a
 mistake to think that analysis tools (like flawfinder) are a substitute for security training and
-knowledge.'' Static analysis tools supplement training, disciplined bug tracking and incident
-response, threat modeling, dynamic testing, fuzz testing, penetration testing, and holistic reviews.
+knowledge'' \cite{flawfinder}. Static analysis tools supplement training, disciplined bug tracking
+and incident response, threat modeling, dynamic testing, fuzz testing, penetration testing, and
+holistic reviews.
 
 The SDL stages are based on the waterfall approach to software development. However, the concepts
 can be applied to agile if the cycle times are compressed from project-scale to sprint-scale.
@@ -219,7 +221,7 @@ Flawfinder.
 
 \subsection{Purpose}
 
-Flawfinder is a free and open source C/C++ static analysis tool licensed under the GNU Public
+Flawfinder is a free and open source C and C++ static analysis tool licensed under the GNU Public
 License version 2. The project is defined by simplicity. It is simple in concept, simple in
 implementation, and simple to use.
 
@@ -267,7 +269,7 @@ right.
 \subsubsection{Find Function Hits}
 
 Second, Flawfinder searches the source code for instances of the functions in the database. This
-search is somewhat smart--it doesn't do full language parsing, but it does differentiate between
+search is context aware--it doesn't do full language parsing, but it does differentiate between
 code, comments and strings. This makes it smarter than a simple search tool, like \tt{grep}.
 Flawfinder will also ignore hits in lines that include the comment \tt{/* Flawfinder: ignore */}.
 This is so that developers can silence warnings for cases that they have analyzed and confirmed to
@@ -421,15 +423,15 @@ Taken together, these tools can clearly and quickly identify and reduce software
 \bibitem{flawfinder} D. Wheeler, "Flawfinder Home Page", \textit{Dwheeler.com}, 2019. [Online].
 Available: https://dwheeler.com/Flawfinder/. [Accessed: 02- Nov- 2019].
 
-\bibitem{statick} "sscpac/statick", \textit{GitHub}, 2019. [Online]. Available:
-https://github.com/sscpac/statick. [Accessed: 02- Nov- 2019].
-
 \bibitem{ms_sdl} "Simplified Implementation of the Microsoft SDL", \textit{Microsoft.com}, 2010.
 [Online]. Available: https://www.microsoft.com/en-us/download/details.aspx?id=12379. [Accessed: 13-
 Nov- 2019].
 
 \bibitem{this_repo} "kkredit/static-analysis-research-paper", \textit{GitHub}, 2019. [Online].
 Available: https://github.com/kkredit/static-analysis-research-paper. [Accessed: 18- Nov- 2019].
+
+\bibitem{statick} "sscpac/statick", \textit{GitHub}, 2019. [Online]. Available:
+https://github.com/sscpac/statick. [Accessed: 02- Nov- 2019].
 
 \bibitem{statick_container} "kkredit/statick-docker", \textit{GitHub}, 2019. [Online]. Available:
 https://github.com/kkredit/statick-docker. [Accessed: 24- Nov- 2019].
